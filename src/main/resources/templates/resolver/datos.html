@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>CeCIM | Capacitador</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <link href="/css/AdminLTE.min.css" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/assets/css/paper-bootstrap-wizard.css" rel="stylesheet"/>
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="/assets/css/demo.css" rel="stylesheet"/>
+
+    <!-- Fonts and Icons -->
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="/assets/css/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen"/>
+</head>
+
+<body>
+<div class="image-container set-full-height" style="background-image: url('/assets/img/paper-4.jpg')">
+    <!--   Big container   -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <!--      Wizard container        -->
+                <div class="wizard-container">
+                    <div class="card wizard-card" data-color="blue" id="wizard">
+                        <form action="" method="">
+                            <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
+
+                            <div class="wizard-header">
+                                <h3 class="wizard-title">Evaluación de calidad</h3>
+                                <p class="category">Favor de resolver la evaluación.</p>
+                            </div>
+                            <div class="wizard-navigation">
+                                <div class="progress-with-circle">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1"
+                                         aria-valuemax="4" style="width: 5%;"></div>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a href="#location" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-list"></i>
+                                            </div>
+                                            1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#type" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-list"></i>
+                                            </div>
+                                            2
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#facilities" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-panel"></i>
+                                            </div>
+                                            3
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#description" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-pencil"></i>
+                                            </div>
+                                            4
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane" id="location">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text"> ¿Cuál es la forma correcta de expresar lo siguiente:
+                                                (a+b)^2?</h5>
+                                        </div>
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <div class="form-group clearfix">
+                                                <div class="icheck-success d-inline">
+                                                    <input type="checkbox" name="ra">
+                                                    <label>a) a^2 + b^2
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="checkbox" name="rb">
+                                                    <label>b) a^2 + ab^2 + b^2
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="checkbox" name="rc">
+                                                    <label>c) 2ab + ab^2
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="checkbox" name="rd">
+                                                    <label>d) a^2 + 2ab + b^2
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="type">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h5 class="info-text"> ¿Cuál es el resultado de 5+5x5?</h5>
+                                        </div>
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <div class="form-group clearfix">
+                                                <div class="icheck-success d-inline">
+                                                    <input type="checkbox" name="ra">
+                                                    <label >a) 30
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="checkbox" name="rb">
+                                                    <label>b) 50
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="checkbox" name="rc">
+                                                    <label >c) 15
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="checkbox" name="rd">
+                                                    <label >d) 125
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="facilities">
+                                    <h5 class="info-text">Tell us more about facilities. </h5>
+                                    <div class="row" id="sss">
+                                        <div class="col-md-2">
+                                            <div class="box box-solid">
+                                                <div class="box-header with-border">
+                                                    <h4 class="box-title" align="center">Documentos</h4>
+                                                </div>
+                                                <div class="box-body">
+                                                    <div id="external-events">
+                                                        <!--<div th:switch="${row.stageDocument}">-->
+                                                            <div class="external-event bg-green" id="cuadro1"
+                                                                 name="1" draggable="true" value="hola"
+                                                                 ondragstart="start(event)" ondragend="end(event)">Entregar</div>
+                                                        <!--</div>-->
+                                                    </div>
+                                                    <div id="external-events1">
+
+                                                            <div class="external-event bg-green" id="1b"
+                                                                 name="2" draggable="true" value="hola"
+                                                                 ondragstart="start(event)" ondragend="end(event)">Recepción</div>
+
+                                                    </div>
+                                                    <div id="external-events2" >
+                                                        <div class="external-event bg-green" id="1c"
+                                                             name="3" draggable="true" value="hola"
+                                                             ondragstart="start(event)" ondragend="end(event)">Modelo</div>
+                                                    </div>
+                                                    <div id="external-events3" >
+                                                        <div class="external-event bg-green" id="1d"
+                                                             name="4" draggable="true" value="hola"
+                                                             ondragstart="start(event)" ondragend="end(event)">vista</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="box box-primary">
+                                                <div class="box-body no-padding">
+                                                    <div id="cuadro3"
+                                                         style =   "float: left;
+                                                                width: 160px;
+                                                                height: 300px;
+                                                                padding: 5px;
+                                                                margin: 10px;"
+                                                         ondragenter = "return enter(event)"
+                                                         ondragover = "return over(event)"
+                                                         ondragleave = "return leave(event)"
+                                                         ondrop = "return clonar(event)"
+                                                         class="external-event bg-gray">
+                                                        <p align="center">Etapa Inicial</p>
+                                                    </div>
+                                                    <div id="cuadro4"
+                                                         style =   "float: left;
+                                                                width: 160px;
+                                                                height: 300px;
+                                                                padding: 5px;
+                                                                margin: 10px;"
+                                                         ondragenter = "return enter(event)"
+                                                         ondragover = "return over(event)"
+                                                         ondragleave = "return leave(event)"
+                                                         ondrop = "return clonar(event)"
+                                                         class="external-event bg-gray">
+                                                        <p align="center">Etapa de Desarrollo</p>
+                                                    </div>
+                                                    <!--<div id="cuadro5"
+                                                         style =   "float: left;
+                                                                width: 160px;
+                                                                height: 300px;
+                                                                padding: 5px;
+                                                                margin: 10px;"
+                                                         ondragenter = "return enter(event)"
+                                                         ondragover = "return over(event)"
+                                                         ondragleave = "return leave(event)"
+                                                         ondrop = "return clonar(event)"
+                                                         class="external-event bg-gray">
+                                                        <p align="center">Etapa de Cierre</p>
+                                                    </div>-->
+                                                    <div id="papelera"
+                                                         style =   "float: left;
+                                                                width: 150px;
+                                                                height: 300px;
+                                                                padding: 5px;
+                                                                margin: 10px;"
+                                                         ondragenter = "return enter(event)"
+                                                         ondragover = "return over(event)"
+                                                         ondragleave = "return leave(event)"
+                                                         ondrop = "return eliminar(event)"
+                                                         class="external-event bg-gray">
+                                                        <p align="center"><i class="material-icons">delete</i></p>
+                                                    </div>
+                                                </div>
+                                                <!-- /.box-body -->
+                                            </div>
+                                            <!-- /. box -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="description">
+                                    <div class="row">
+                                        <h5 class="info-text"> Explique brevemente como fabricaría una mesa. </h5>
+                                        <div class="col-sm-6 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Describa aquí:</label>
+                                                <textarea class="form-control" placeholder="" rows="9"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Ejemplo</label>
+                                                <p class="description">"Se deberá pensar en primer lugar el material de
+                                                    la mesa, puede ser madera, marmol, vidrio, etc..."</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-footer">
+                                <div class="pull-right">
+                                    <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next'
+                                           value='Siguiente'/>
+                                    <input type='button' class='btn btn-finish btn-fill btn-danger btn-wd' name='finish'
+                                           value='Finalizar'/>
+                                </div>
+
+                                <div class="pull-left">
+                                    <input type='button' class='btn btn-previous btn-default btn-wd' name='previous'
+                                           value='Anterior'/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- wizard container -->
+            </div>
+        </div> <!-- row -->
+    </div> <!--  big container -->
+</div>
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+
+<!--  Plugin for the Wizard -->
+<script src="/assets/js/demo.js" type="text/javascript"></script>
+<script src="/assets/js/paper-bootstrap-wizard.js" type="text/javascript"></script>
+
+<!--  More information about jquery.validate here: https://jqueryvalidation.org/	 -->
+<script src="/assets/js/jquery.validate.min.js" type="text/javascript"></script>
+
+<!-- fullCalendar 2.2.5 -->
+<script src="/plugins/moment/moment.min.js"></script>
+
+<script>
+    contador = 0; // Variable global para tener poder poner un id unico a cada elemento cuando se clona.
+    contadorI = -1;
+    contadorD = -1;
+    contadorC = -1;
+    contadorG = -1;
+    var inicialesI = [];
+    var inicialesD = [];
+    var inicialesC = [];
+    var inicialesG = [];
+    function start(e) {
+        e.dataTransfer.effecAllowed = 'move'; // Define el efecto como mover (Es el por defecto)
+        e.dataTransfer.setData("Data", e.target.id); // Coje el elemento que se va a mover
+        e.dataTransfer.setDragImage(e.target, 0, 0); // Define la imagen que se vera al ser arrastrado el elemento y por donde se coje el elemento que se va a mover (el raton aparece en la esquina sup_izq con 0,0)
+        e.target.style.opacity = '0.4';
+    }
+
+    function end(e) {
+        e.target.style.opacity = ''; // Pone la opacidad del elemento a 1
+        e.dataTransfer.clearData("Data");
+    }
+
+    function enter(e) {
+        //e.target.style.border = '3px dotted #555';
+    }
+
+    function leave(e) {
+        e.target.style.border = '';
+    }
+
+    function over(e) {
+        var elemArrastrable = e.dataTransfer.getData("Data"); // Elemento arrastrado
+        var id = e.target.id; // Elemento sobre el que se arrastra
+
+        if (id == 'cuadro3' || id == 'cuadro4' || id == 'cuadro5' || id == 'papelera')
+            return false; // Cualquier elemento se puede soltar en la papelera
+    }
+
+    /**
+     *
+     * Elimina el elemento que se mueve
+     *
+     **/
+    function eliminar(e){
+        var elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data")); // Elemento arrastrado
+        elementoArrastrado.parentNode.removeChild(elementoArrastrado); // Elimina el elemento
+        e.target.style.border = '';   // Quita el borde
+    }
+
+    /**
+     *
+     * Clona el elemento que se mueve
+     *
+     **/
+    function clonar(e) {
+        var repeticionesI = 0;
+        var repeticionesD = 0;
+        var repeticionesC = 0;
+        var repeticionesG = 0;
+        var elementoArrastrado = document.getElementById(e.dataTransfer.getData("Data")); // Elemento arrastrado
+
+
+
+        var name = elementoArrastrado.getAttribute('name');
+
+
+
+        elementoArrastrado.style.opacity = ''; // Dejamos la opacidad a su estado anterior para copiar el elemento igual que era antes
+
+        if ((e.target.id == 'cuadro3')) {
+            contadorI += 1;
+            var elementoClonado = elementoArrastrado.cloneNode(true); // Se clona el elemento
+            var texto = elementoClonado.textContent;
+
+
+            inicialesI [contadorI] = texto;
+            for (i = 0; i <= contadorI; i++){
+                if (inicialesI[i] == texto) {
+                    repeticionesI++;
+                }
+            }
+            if (contadorI < 10) {
+                texto = texto + ".01" + ".0"+repeticionesI;
+            } else {
+                texto = texto + ".01" + "."+repeticionesI;
+            }
+            elementoClonado.id = "ElemClonado" + contador; // Se cambia el id porque tiene que ser unico
+            contador += 1;
+            elementoClonado.textContent = texto;
+            elementoClonado.style.position = "static";  // Se posiciona de forma "normal" (Sino habria que cambiar las coordenadas de la posición)
+
+            e.target.appendChild(elementoClonado); // Se añade el elemento clonado
+            e.target.style.border = '';   // Quita el borde del "cuadro clonador"
+        }
+
+        if ((e.target.id == 'cuadro4') ) {
+            contadorD += 1;
+            var elementoClonado = elementoArrastrado.cloneNode(true); // Se clona el elemento
+            var texto = elementoClonado.textContent;
+            inicialesD [contadorD] = texto;
+            for (i = 0; i <= contadorD; i++){
+                if (inicialesD[i] == texto) {
+                    repeticionesD++;
+                }
+            }
+            if (contadorD < 10) {
+                texto = texto + ".01" + ".0"+repeticionesD;
+            } else {
+                texto = texto + ".01" + "."+repeticionesD;
+            }
+            elementoClonado.id = "ElemClonado" + contador; // Se cambia el id porque tiene que ser unico
+            contador += 1;
+            elementoClonado.textContent = texto;
+            elementoClonado.style.position = "static";  // Se posiciona de forma "normal" (Sino habria que cambiar las coordenadas de la posición)
+            e.target.appendChild(elementoClonado); // Se añade el elemento clonado
+            e.target.style.border = '';   // Quita el borde del "cuadro clonador"
+            e.dataTransfer.clearData("Data");
+        }
+
+        if ((e.target.id == 'cuadro5')) {
+            contadorC += 1;
+            var elementoClonado = elementoArrastrado.cloneNode(true); // Se clona el elemento
+            var texto = elementoClonado.textContent;
+            inicialesC [contadorC] = texto;
+            for (i = 0; i <= contadorC; i++){
+                if (inicialesC[i] == texto) {
+                    repeticionesC++;
+                }
+            }
+            if (contadorC < 10) {
+                texto = texto + ".01" + ".0"+repeticionesC;
+            } else {
+                texto = texto + ".01" + "."+repeticionesC;
+            }
+            elementoClonado.id = "ElemClonado" + contador; // Se cambia el id porque tiene que ser unico
+            contador += 1;
+            elementoClonado.textContent = texto;
+            elementoClonado.style.position = "static";  // Se posiciona de forma "normal" (Sino habria que cambiar las coordenadas de la posición)
+            e.target.appendChild(elementoClonado); // Se añade el elemento clonado
+            e.target.style.border = '';   // Quita el borde del "cuadro clonador"
+        }
+
+        /*if ((e.target.id == 'cuadro3' || e.target.id == 'cuadro4' || e.target.id == 'cuadro5') && (name == 4)) {
+            contadorG += 1;
+            var elementoClonado = elementoArrastrado.cloneNode(true); // Se clona el elemento
+            var texto = elementoClonado.textContent;
+            inicialesG [contadorG] = texto;
+            for (i = 0; i <= contadorG; i++){
+                if (inicialesG[i] == texto) {
+                    repeticionesG++;
+                }
+            }
+            if (contadorG < 10) {
+                texto = texto + ".01" + ".0"+repeticionesG;
+            } else {
+                texto = texto + ".01" + "."+repeticionesG;
+            }
+            elementoClonado.id = "ElemClonado" + contador; // Se cambia el id porque tiene que ser unico
+            contador += 1;
+            elementoClonado.textContent = texto;
+            elementoClonado.style.position = "static";  // Se posiciona de forma "normal" (Sino habria que cambiar las coordenadas de la posición)
+            e.target.appendChild(elementoClonado); // Se añade el elemento clonado
+            e.target.style.border = '';   // Quita el borde del "cuadro clonador"
+        }*/
+    }
+</script>
+</html>

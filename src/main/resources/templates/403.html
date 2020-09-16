@@ -1,0 +1,68 @@
+<!--<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Cerrar Sesion"/>
+</form>
+<h1><a th:href="@{/admin}"> admin</a> | <a th:href="@{/user}"> user</a></h1>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:include="/dependences/_Header"></th:block>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<div class="wrapper">
+
+    <th:block th:include="/dependences/_Body"></th:block>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <!--<h1 class="m-0 text-dark">Menú</h1>-->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="error-page">
+                <h2 class="headline text-warning"> 403</h2>
+
+                <div class="error-content">
+                    <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Página no encontrada.</h3>
+
+                    <p>
+                        Usted no tiene permisos para visitar esta página.
+                        Por favor <a href="/menu">regrese a la página principal</a> para continuar su navegación.
+                    </p>
+
+                </div>
+                <!-- /.error-content -->
+            </div>
+            <!-- /.error-page -->
+        </section>
+        <!-- /.content -->
+
+    </div>
+    <!-- /.content-wrapper -->
+    <th:block th:include="/dependences/_Body"></th:block>
+</div>
+<!-- ./wrapper -->
+<th:block th:include="/dependences/_Script"></th:block>
+</body>
+</html>

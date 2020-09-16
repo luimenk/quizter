@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="/dependences/_Header"></th:block>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini " >
+<div class="wrapper">
+    <th:block th:include="/dependences/_Body"></th:block>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Asignar alimentos</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/menu">Inicio</a></li>
+                            <li class="breadcrumb-item active">Panel v1</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="sticky-top mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Alimentos</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- the events -->
+                                    <div id="external-events">
+                                        <div id="1" draggable="true" class="external-event bg-success"  ondragstart="dragElement(event)" ondragend="endDragElement(event)" >Manzana</div>
+                                        <div id="2" draggable="true" class="external-event bg-warning"  ondragstart="dragElement(event)" ondragend="endDragElement(event)">Aguacate</div>
+                                        <div id="3" draggable="true" class="external-event bg-info" ondragstart="dragElement(event)" ondragend="endDragElement(event)">Platano</div>
+                                        <div id="4" draggable="true" class="external-event bg-primary"  ondragstart="dragElement(event)" ondragend="endDragElement(event)">Huevo</div>
+                                        <div id="5" draggable="true" class="external-event bg-danger"  ondragstart="dragElement(event)" ondragend="endDragElement(event)">Zanahoria</div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Registrar alimento</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                                        <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                                        <ul class="fc-color-picker" id="color-chooser">
+                                            <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
+                                            <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
+                                            <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                                            <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                                            <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- /btn-group -->
+                                    <div class="input-group">
+                                        <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+                                        <div class="input-group-append">
+                                            <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                                        </div>
+                                        <!-- /btn-group -->
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="card card-primary">
+                            <div class="card-body p-0">
+                                <!-- THE CALENDAR -->
+                                <table>
+                                    <tr>
+                                        <th>Etapa</th>
+                                        <th>Lunes</th>
+                                        <th>Martes</th>
+                                        <th>Miércoles</th>
+                                        <th>Jueves</th>
+                                        <th>Viernes</th>
+                                        <th>Sábado</th>
+                                        <th>Domingo</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Desayuno</td>
+                                        <td id="desayuno1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="desayuno2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="desayuno3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="desayuno4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="desayuno5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="desayuno6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="desayuno7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Almuerzo</td>
+                                        <td id="almuerzo1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="almuerzo2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="almuerzo3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="almuerzo4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="almuerzo5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="almuerzo6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="almuerzo7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Snack</td>
+                                        <td id="snack1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="snack2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="snack3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="snack4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="snack5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="snack6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="snack7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Comida</td>
+                                        <td id="comida1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="comida2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="comida3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="comida4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="comida5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="comida6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="comida7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cena</td>
+                                        <td id="cena1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="cena2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="cena3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="cena4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="cena5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="cena6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        <td id="cena7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <th:block th:include="/dependences/_Footer"></th:block>
+</div>
+<!-- ./wrapper -->
+<th:block th:include="/dependences/_Script"></th:block>
+<script>
+    var count=0;
+    function dragElement(e) {
+        e.dataTransfer.setData("text", e.target.id);
+        e.target.style.opacity = '0.4';
+    }
+    function endDragElement(e) {
+        e.target.style.opacity = ''; // Pone la opacidad del elemento a 1
+        e.dataTransfer.clearData("text");
+
+    }
+    function allowDrop(e) {
+        e.dataTransfer.getData("text");
+        e.preventDefault();
+    }
+    function drop(e) {
+        e.preventDefault();
+        var elementoArrastrado = document.getElementById(e.dataTransfer.getData("text")); // Elemento arrastrado
+        var elementoClonado = elementoArrastrado.cloneNode(true); // Se clona el elemento
+        var texto = elementoClonado.textContent;
+        elementoClonado.id = "ElemClonado" + count;
+        count++;
+        elementoClonado.style.position = "static";
+        elementoClonado.style.opacity='';
+
+        elementoClonado.addEventListener('contextmenu', function (ev) {
+            ev.preventDefault();
+            elementoClonado.parentNode.removeChild(elementoClonado);
+            return false;
+        }, false);
+
+        var parent=e.target;
+        if(parent.id.includes("ElemClonado")){
+            var newParent=parent.parentElement;
+            newParent.appendChild(elementoClonado);
+        }else{
+            e.target.appendChild(elementoClonado); // Se añade el elemento clonado
+        }
+        e.target.style.border = '';   // Quita el borde del "cuadro clonador"
+    }
+</script>
+
+
+<!-- Page specific script -->
+</body>
+</html>

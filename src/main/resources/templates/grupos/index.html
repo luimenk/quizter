@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:include="/dependences/_Header"></th:block>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<div class="wrapper">
+
+    <th:block th:include="/dependences/_Body"></th:block>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <!--<h1 class="m-0 text-dark">Menú</h1>-->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div></div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+
+                <div class="row">
+                    <div style="padding-left: 10px">
+                        <a th:href="@{'/agregarGrupo'}">
+                            <button type="button" class="btn btn-block btn-success">Agregar</button>
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title" align="center">Listado de Elementos</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" style="overflow-x: scroll">
+                                <table id="tabla" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre del Grupo</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="row : ${grupos}">
+                                        <td th:text="${row.idGrupo}"></td>
+                                        <td th:text="${row.nombreGrupo}"></td>
+                                        <td class="project-actions text-right">
+                                            <!--<a class="btn btn-primary btn-sm" href="#"><i class="fas fa-folder"></i>View</a>-->
+                                            <a class="btn btn-info btn-sm" th:href="@{'/modificarGrupo/' + ${row.idGrupo}}">
+                                                <i class="fas fa-pencil-alt"></i>Editar
+                                            </a>
+                                            <a class="btn btn-danger btn-sm" th:href="@{'/eliminarGrupo/' + ${row.idGrupo}}">
+                                                <i class="fas fa-trash"></i>Eliminar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre del Grupo</th>
+                                        <th></th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+</div>
+<!-- ./wrapper -->
+<th:block th:include="/dependences/_Script"></th:block>
+<!-- DataTables -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script>
+    //Función de la tabla
+    $(function () {
+        $("#tabla").DataTable({
+            "responsive": true,
+            "autoWidth": false
+        });
+    });
+</script>
+<div th:if="${param.error}">
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        Toast.fire({
+            icon: 'warning',
+            title: 'El registro no puede ser eliminado!'
+        });
+    </script>
+</div>
+<div th:if="${message == 'guardado'}">
+    <script>
+        const Toast = Swal.mixin({
+           toast: true,
+           position: 'top-end',
+           showConfirmButton: false,
+           timer: 3000
+        });
+        Toast.fire({
+            icon: 'success',
+            title: 'El registro se ha cargado exitosamente!'
+        });
+    </script>
+</div>
+<div th:if="${message == 'modificado'}">
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        Toast.fire({
+            icon: 'success',
+            title: 'El registro se ha modificado exitosamente!'
+        });
+    </script>
+</div>
+<div th:if="${message == 'eliminado'}">
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        Toast.fire({
+            icon: 'success',
+            title: 'El registro eliminó correctamente.'
+        });
+    </script>
+</div>
+</body>
+</html>

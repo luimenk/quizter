@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:include="/dependences/_Header"></th:block>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<div class="wrapper">
+
+    <th:block th:include="/dependences/_Body"></th:block>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <!--<h1 class="m-0 text-dark">Menú</h1>-->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div></div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+
+                <div class="row">
+                    <div class="col-2" align="right">
+
+                    </div>
+                    <div class="col-2" align="right">
+
+                    </div>
+                    <div class="col-2" align="right">
+
+                    </div>
+                    <div class="col-2" align="right">
+
+                    </div>
+                    <div class="col-2" align="right">
+
+                    </div>
+                    <div class="col-2" align="right">
+                        <a th:href="@{'/agregarExamen'}">
+                            <button type="button" class="btn btn-block btn-success">Agregar</button>
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title" align="center">Listado de Elementos</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="tabla" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre del Examen</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="row : ${examenes}">
+                                        <td th:text="${row.idExamen}"></td>
+                                        <td th:text="${row.nombreExamen}"></td>
+                                        <td align="center">
+                                            <a th:href="@{'/eliminarExamen/' + ${row.idExamen}}">
+                                                <button type="button" class="btn btn-block btn-danger">Eliminar</button>
+                                            </a>
+                                        </td>
+                                        <td align="center">
+                                            <a th:href="@{'/modificarExamen/' + ${row.idExamen}}">
+                                                <button type="button" class="btn btn-block btn-primary">Modificar</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre del Examen</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                                <div th:if="${param.error}">
+                                    <script>
+                                        alert("El registro no puede ser eliminado");
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+
+    </div>
+    <!-- /.content-wrapper -->
+    <th:block th:include="/dependences/_Body"></th:block>
+</div>
+<!-- ./wrapper -->
+<th:block th:include="/dependences/_Script"></th:block>
+<script>
+    //Función de la tabla
+    $(function () {
+        $("#tabla").DataTable({
+            "responsive": true,
+            "autoWidth": false
+        });
+    });
+</script>
+</body>
+</html>

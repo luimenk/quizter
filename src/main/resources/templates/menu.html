@@ -1,0 +1,189 @@
+<!--<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Cerrar Sesion"/>
+</form>
+<h1><a th:href="@{/admin}"> admin</a> | <a th:href="@{/user}"> user</a></h1>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:include="/dependences/_Header"></th:block>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<div class="wrapper">
+
+    <th:block th:include="/dependences/_Body"></th:block>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <!--<h1 class="m-0 text-dark">Menú</h1>-->
+                        <!--<span th:text="${#authorization.expression('hasRole(''ADMIN'')')}"></span>
+                        <span th:text="${#authorization.expression('hasRole(''USER'')')}"></span>
+                        <div th:switch="${#authorization.expression('hasRole(''ADMIN'')')}">
+                            <span th:case="true">Muestra all </span>
+                            <span th:case="false"> Sólo muestra lo de resolver el examen</span>
+                        </div>-->
+
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div th:switch="${#authorization.expression('hasRole(''ADMIN'')')}">
+                    <div th:case="true">
+                        <div class="row">
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h3><span th:text="${contarUsuarios}"></span></h3>
+                                        <p>Usuarios</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="/usuarios" class="small-box-footer">Consulta <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-success">
+                                    <div class="inner">
+                                        <h3><span th:text="${contarGrupos}"></span></h3>
+                                        <p>Grupos</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <a href="/grupos" class="small-box-footer">Consulta <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3><span th:text="${contarExamenes}"></span></h3>
+                                        <p>Exámenes</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="far fa-file-alt"></i>
+                                    </div>
+                                    <a href="/examenes" class="small-box-footer">Consulta <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-danger">
+                                    <div class="inner">
+                                        <h3><span th:text="${contarTemas}"></span></h3>
+                                        <p>Temas</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <a href="/temas" class="small-box-footer">Consulta <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                        </div>
+                        <!-- /.row -->
+                        <!-- Small boxes (Stat box) -->
+                        <div class="row">
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h3><span th:text="${contarPreguntas}"></span></h3>
+                                        <p>Preguntas</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-question"></i>
+                                    </div>
+                                    <a href="/preguntas" class="small-box-footer">Consulta <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-success">
+                                    <div class="inner">
+                                        <h3><span th:text="${contarAsignaciones}"></span></h3>
+                                        <p>Asignación de exámenes</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-user-edit"></i>
+                                    </div>
+                                    <a href="/asignacions" class="small-box-footer">Consulta <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3><span th:text="${contarAsignaciones}"></span></h3>
+                                        <p>Resolver</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                    </div>
+                                    <a href="/resolverlos" class="small-box-footer">Consulta <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                        </div>
+                    </div>
+                    <div th:case="false">
+                        <div class="row">
+                            <div class="col-lg-3 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3><span th:text="${contarAsignaciones}"></span></h3>
+                                        <p>Resolver</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-stats-bars"></i>
+                                    </div>
+                                    <a href="/resolverlos" class="small-box-footer">Consulta <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+
+    </div>
+    <!-- /.content-wrapper -->
+    <th:block th:include="/dependences/_Body"></th:block>
+</div>
+<!-- ./wrapper -->
+<th:block th:include="/dependences/_Script"></th:block>
+</body>
+</html>

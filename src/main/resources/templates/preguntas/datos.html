@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:include="/dependences/_Header"></th:block>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<div class="wrapper">
+    <th:block th:include="/dependences/_Body"></th:block>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="col-md-6">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Selección de formulario</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Tipo de pregunta</label>
+                            <div class="col-sm-8">
+                                <select class="form-control select2" style="width: 100%;" name="tipoPregunta"
+                                        id="tipoPregunta" onchange="mostrarFormulario()">
+                                    <option value="" selected disabled hidden>Selecciona una opción</option>
+                                    <option value="abierta">Abierta</option>
+                                    <option value="bloques">Bloques</option>
+                                    <option value="multiple">Opción Múltiple</option>
+                                    <option value="boleana">Verdadero o Falso</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="card-footer">
+                        <button type="submit" class="btn btn-success" onclick="mostrarFormulario()">Mostrar</button>
+                    </div>-->
+                </div>
+            </div>
+            <!--<div class="row">
+                <div class="col-md-3">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Create el bloque respuesta</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                                &lt;!&ndash;<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>&ndash;&gt;
+                                <ul class="fc-color-picker" id="color-chooser">
+                                    <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
+                                    <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
+                                    <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                                    <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                                    <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="input-group">
+                                <input id="new-event" type="text" class="form-control">
+                                <div class="input-group-append">
+                                    <button id="add-new-event" type="button" class="btn btn-primary">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h4 class="card-title">Respuesta Ordenada</h4>
+                        </div>
+                        <div class="card-body">
+                            &lt;!&ndash; the events &ndash;&gt;
+                            <div id="external-events">
+                                <div class="col-sm-6">
+                                    &lt;!&ndash;<div class="external-event bg-success">Lunch</div>&ndash;&gt;
+                                </div>
+                                &lt;!&ndash;<div class="external-event bg-success">Lunch</div>
+                                <div class="external-event bg-warning">Go home</div>&ndash;&gt;
+                                &lt;!&ndash;                                <div class="external-event bg-info">Do homework</div>
+                                                                <div class="external-event bg-primary">Work on UI design</div>
+                                                                <div class="external-event bg-danger">Sleep tight</div>&ndash;&gt;
+                                &lt;!&ndash;<div class="checkbox">
+                                    <label for="drop-remove">
+                                        <input type="checkbox" id="drop-remove">
+                                        remove after drop
+                                    </label>
+                                </div>&ndash;&gt;
+                            </div>
+                        </div>
+                        &lt;!&ndash; /.card-body &ndash;&gt;
+                    </div>
+                </div>
+            </div>-->
+            <div id="formularioPregunta">
+
+            </div>
+        </section>
+    </div>
+    <th:block th:include="/dependences/_Body"></th:block>
+</div>
+<th:block th:include="/dependences/_Script"></th:block>
+<!-- Select2 -->
+<script src="/plugins/select2/js/select2.full.min.js"></script>
+<!-- jquery-validation -->
+<script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#validacion').validate({
+            rules: {
+                dpregunta: {
+                    required: true,
+                },
+                respuestaa: {
+                    required: true,
+                },
+                respuestab: {
+                    required: true,
+                },
+                respuestac: {
+                    required: true,
+                },
+                respuestad: {
+                    required: true,
+                },
+                terms: {
+                    required: true
+                },
+            },
+            messages: {
+                dpregunta: {
+                    required: "Por favor complete la información",
+                },
+                respuestaa: {
+                    required: "Por favor complete la información",
+                },
+                respuestab: {
+                    required: "Por favor complete la información",
+                },
+                respuestac: {
+                    required: "Por favor complete la información",
+                },
+                respuestad: {
+                    required: "Por favor complete la información"
+                },
+                terms: "Por favor marque la casilla de verificación"
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function mostrarFormulario() {
+        var formulario = "";
+        var tipoPregunta = document.getElementById('tipoPregunta').value;
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        console.log(tipoPregunta);
+        if (tipoPregunta == "abierta") {
+            formulario =
+                '<div class="col-md-6">' +
+                '<div class="card card-info">' +
+                '<div class="card-header">' +
+                '<h3 class="card-title">Pregunta Abierta</h3>' +
+                '</div>' +
+                '<form class="form-horizontal" method="POST" th:action="@{/registrarPregunta}"' +
+                'th:object="${pregunta}" id="validacion">' +
+                '<div class="card-body">' +
+                '<input type="hidden" name="idPregunta" id="idPregunta" th:value="${idPregunta}">' +
+                '<div class="form-group row">' +
+                '<label class="col-sm-4 col-form-label">Pregunta</label>' +
+                '<div class="col-sm-8">' +
+                '<input type="text" name="dpregunta" id="dpregunta" th:value="${dpregunta}" class="form-control">' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group row">' +
+                '<label class="col-sm-4 col-form-label">Tema de la pregunta</label>' +
+                '<div class="col-sm-8">' +
+                '<select class="form-control select2" style="width: 100%;" name="idTema" id="idTema">';
+            $.getJSON("https://localhost:8443/getTemas", function (result) {
+                $.each(result, function (i, field) {
+                    formulario +=
+                        '<option value="' + field.idTema + '">' + field.nombreTema + '</option>';
+                    console.log(formulario);
+                });
+                formulario +=
+                    '</select>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="form-group mb-0">' +
+                    '<div class="custom-control custom-checkbox">' +
+                    '<input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">' +
+                    '<label class="custom-control-label" for="exampleCheck1">He verificado la información.</label>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="card-footer">' +
+                    '<button type="submit" class="btn btn-primary">Guardar</button>' +
+                    '</div>' +
+                    '</form>' +
+                    '</div>' +
+                    '</div>';
+                $("#formularioPregunta").empty().append(formulario);
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Se cargó el formulario exitosamente!'
+                });
+            });
+        }
+        if (tipoPregunta == "multiple") {
+            formulario =
+                '<div class="col-md-6">' +
+                '<div class="card card-info">' +
+                '<div class="card-header">' +
+                '<h3 class="card-title">Opción Múltiple</h3>' +
+                '</div>' +
+                '<form class="form-horizontal" method="POST" th:action="@{/registrarPregunta}" th:object="${pregunta}" id="validacion">' +
+                '<div class="card-body">' +
+                '<input type="hidden" name="idPregunta" id="idPregunta" th:value="${idPregunta}">' +
+                '<div class="form-group row">' +
+                '<label class="col-sm-4 col-form-label">Pregunta</label>' +
+                '<div class="col-sm-8">' +
+                '<input type="text" name="dpregunta" id="dpregunta" th:value="${dpregunta}" class="form-control">' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group row">' +
+                '<label class="col-sm-4 col-form-label">Tema de la pregunta</label>' +
+                '<div class="col-sm-8">' +
+                '<select class="form-control select2" style="width: 100%;" name="idTema" id="idTema">';
+            $.getJSON("https://localhost:8443/getTemas", function (result) {
+                $.each(result, function (i, field) {
+                    formulario +=
+                        '<option value="' + field.idTema + '">' + field.nombreTema + '</option>';
+                    console.log(formulario);
+                });
+                formulario +=
+                    '</select>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="form-group row">' +
+                    '<label class="col-sm-4 col-form-label">Respuesta a)</label>' +
+                    '<div class="col-sm-8">' +
+                    '<input type="text" name="respuestaa" id="respuestaa" th:value="${respuestaa}" class="form-control">' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="form-group row">' +
+                    '<label class="col-sm-4 col-form-label">Respuesta b)</label>' +
+                    '<div class="col-sm-8">' +
+                    '<input type="text" name="respuestab" id="respuestab" th:value="${respuestab}" class="form-control">' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="form-group row">' +
+                    '<label class="col-sm-4 col-form-label">Respuesta c)</label>' +
+                    '<div class="col-sm-8">' +
+                    '<input type="text" name="respuestac" id="respuestac" th:value="${respuestac}" class="form-control">' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="form-group row">' +
+                    '<label class="col-sm-4 col-form-label">Respuesta d)</label>' +
+                    '<div class="col-sm-8">' +
+                    '<input type="text" name="respuestad" id="respuestad" th:value="${respuestad}" class="form-control">' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="row">' +
+                    '<label class="col-sm-6 col-form-label">Cuál es la respuesta(s) correcta(s)?</label>' +
+                    '<div class="col-sm-6">' +
+                    '<div class="form-group clearfix">' +
+                    '<div class="icheck-success d-inline">' +
+                    '<input type="checkbox" id="ra" name="ra">' +
+                    '<label for="ra">a)' +
+                    '</label>' +
+                    '</div>' +
+                    '<div class="icheck-success d-inline">' +
+                    '<input type="checkbox" id="rb" name="rb">' +
+                    '<label for="rb">b)' +
+                    '</label>' +
+                    '</div>' +
+                    '<div class="icheck-success d-inline">' +
+                    '<input type="checkbox" id="rc" name="rc">' +
+                    '<label for="rc">c)' +
+                    '</label>' +
+                    '</div>' +
+                    '<div class="icheck-success d-inline">' +
+                    '<input type="checkbox" id="rd" name="rd">' +
+                    '<label for="rd">d)' +
+                    '</label>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="form-group mb-0">' +
+                    '<div class="custom-control custom-checkbox">' +
+                    '<input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">' +
+                    '<label class="custom-control-label" for="exampleCheck1">He verificado la información.</label>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="card-footer">' +
+                    '<button type="submit" class="btn btn-primary">Guardar</button>' +
+                    '</div>' +
+                    '</form>' +
+                    '</div>' +
+                    '</div>';
+                $("#formularioPregunta").empty().append(formulario);
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Se cargó el formulario exitosamente!'
+                });
+            });
+        }
+        if (tipoPregunta == "boleana") {
+            formulario =
+                '<div class="col-md-6">' +
+                '<div class="card card-info">' +
+                '<div class="card-header">' +
+                '<h3 class="card-title">Verdadero o Falso</h3>' +
+                '</div>' +
+                '<form class="form-horizontal" method="POST" th:action="@{/registrarPregunta}" th:object="${pregunta}" id="validacion">' +
+                '<div class="card-body">' +
+                '<input type="hidden" name="idPregunta" id="idPregunta" th:value="${idPregunta}">' +
+                '<div class="form-group row">' +
+                '<label class="col-sm-4 col-form-label">Pregunta</label>' +
+                '<div class="col-sm-8">' +
+                '<input type="text" name="dpregunta" id="dpregunta" th:value="${dpregunta}" class="form-control">' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group row">' +
+                '<label class="col-sm-4 col-form-label">Tema de la pregunta</label>' +
+                '<div class="col-sm-8">' +
+                '<select class="form-control select2" style="width: 100%;" name="idTema" id="idTema">';
+            $.getJSON("https://localhost:8443/getTemas", function (result) {
+                $.each(result, function (i, field) {
+                    formulario +=
+                        '<option value="' + field.idTema + '">' + field.nombreTema + '</option>';
+                    console.log(formulario);
+                });
+                formulario +=
+                    '</select>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="form-group row">' +
+                    '<label class="col-sm-4 col-form-label">La respuesta a esta pregunta es:</label>' +
+                    '<div class="col-sm-8">' +
+                    '<div class="form-group">' +
+                    '<div class="custom-control custom-radio">' +
+                    '<input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">' +
+                    '<label for="customRadio1" class="custom-control-label">Verdadero</label>' +
+                    '</div>' +
+                    '<div class="custom-control custom-radio">' +
+                    '<input class="custom-control-input" type="radio" id="customRadio2" name="customRadio">' +
+                    '<label for="customRadio2" class="custom-control-label">Falso</label>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="form-group mb-0">' +
+                    '<div class="custom-control custom-checkbox">' +
+                    '<input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">' +
+                    '<label class="custom-control-label" for="exampleCheck1">He verificado la información.</label>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="card-footer">' +
+                    '<button type="submit" class="btn btn-primary">Guardar</button>' +
+                    '</div>' +
+                    '</form>' +
+                    '</div>' +
+                    '</div>';
+                $("#formularioPregunta").empty().append(formulario);
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Se cargó el formulario exitosamente!'
+                });
+            });
+        }
+    }
+</script>
+<script>
+    $(function () {
+        $('.select2').select2()
+    })
+</script>
+<script>
+    $(function () {
+        /* ADDING EVENTS */
+        var currColor = '#3c8dbc' //Red by default
+        //Color chooser button
+        var colorChooser = $('#color-chooser-btn')
+        $('#color-chooser > li > a').click(function (e) {
+            e.preventDefault()
+            //Save color
+            currColor = $(this).css('color')
+            //Add color effect to button
+            $('#add-new-event').css({
+                'background-color': currColor,
+                'border-color': currColor
+            })
+        })
+        $('#add-new-event').click(function (e) {
+            e.preventDefault()
+            //Get value and make sure it is not null
+            var val = $('#new-event').val()
+            if (val.length == 0) {
+                return
+            }
+
+            //Create events
+            var event = $('<div />')
+            event.css({
+                'background-color': currColor,
+                'border-color': currColor,
+                'color': '#fff'
+            }).addClass('external-event')
+            event.html(val)
+            $('#external-events').prepend(event)
+
+            //Add draggable funtionality
+            ini_events(event)
+
+            //Remove event from text input
+            $('#new-event').val('')
+        })
+    })
+</script>
+</body>
+</html>
